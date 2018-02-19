@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>CesarCrypt</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'cesar/bootstrap_4/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="alert alert-light" role="alert">
+
+            <h1 class="display-3">Шифр Цезаря</h1>
+            <p class="lead">Шифр Цезаря один из наиболее древнейших известных шифров. Схема шифрования очень проста -
+                используется сдвиг буквы алфавита на фиксированное число позиций. Используемое преобразование
+                обычно обозначают как ROTN, где N - сдвиг, ROT - сокращение от слова ROTATE, в данном случае
+                “циклический сдвиг”.</p>
+        </div>
+    </div>
+
+</header>
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-5 col-12">
+
+                    <textarea class="form-control" name="original_text" PLACEHOLDER="Enter your text" required=""
+                              id="original_text"
+                              style="min-height: 300px; resize:none">{{ original_text }}</textarea>
+
+
+        </div>
+        <div class="col-md-2 col-12">
+
+            <div class="input-group mb-3 ">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">ROT</span>
+                </div>
+                <input type="text" id="rot" class="form-control" placeholder="N" name="rot" value="0">
+            </div>
+
+            <button type="submit" id="btn_crypt" class="btn btn-primary btn-block btn-dark">Crypt</button>
+            <button type="submit" id="btn_decrypt" class="btn btn-primary btn-block btn-dark">Decrypt</button>
+            <br>
+            <div class="error" style="display: none">
+                <div class="alert alert-danger" role="alert">
+                    <h6 class="alert-heading">Please, enter number</h6>
+                </div>
+            </div>
+            <br>
+        </div>
+
+        <div class="col-md-5 col-12">
+            <div class="form-group">
+                    <textarea class="form-control" name="crypt_text" PLACEHOLDER="Crypt Text"
+                              style="min-height: 300px; resize:none"
+                              id="crypt_text"
+                              readonly>{{ crypt_text }}</textarea>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="container chart" id="chart" style="display: none">
+    <div id="columnchart_values"></div>
+</div>
+<div class="container info" id="info" style="display: none">
+    <div class="alert alert-light" role="alert">
+        <h6 class="display-4" id="info_header"></h6>
+        <p id="rotation"></p>
+    </div>
+</div>
+
+
+<script src="{% static 'cesar/jQuery/jquery.js' %}"></script>
+<script src="{% static 'cesar/bootstrap_4/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'cesar/JS/main.js' %}"></script>
+</body>
+
+</html>
