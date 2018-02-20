@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import json
 
-from cesar.cesar_сrypt import shifr, freq_analysis, info_decrypt
+from cesar.cesar_crypt import shifr, freq_analysis, info_decrypt
 
 
 def crypt(request):
