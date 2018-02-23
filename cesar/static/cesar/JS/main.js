@@ -1,5 +1,3 @@
-$.getScript("https://www.gstatic.com/charts/loader.js", function (data, textStatus, jqxhr) {});
-
 var delay;
 
 
@@ -14,9 +12,10 @@ function analys_web() {
             },
 
             function (msg) {
-                if ($(".info").css('display') == 'none') {
+                if(msg.text.decrypt_text.length > 0) {
                     $(".chart").fadeIn(fade_delay);
                 }
+
 
                 if (msg.text.decrypt_text.length > 0) {
                     $(".info").fadeIn(fade_delay);
@@ -54,6 +53,7 @@ function analys_web() {
                     var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
                     chart.draw(view, options);
                 }
+
             })
     }
     else {
@@ -65,7 +65,6 @@ function analys_web() {
 
 $(window).resize(function () {
     analys_web();
-    console.log("resize");
 });
 
 
@@ -95,6 +94,7 @@ $('#btn_crypt').click(function () {
             },
 
             function (msg) {
+                console.log(msg.crypt_text)
                 $('#crypt_text').text(msg.crypt_text)
             });
 
@@ -120,7 +120,7 @@ $('#btn_decrypt').click(function () {
             },
 
             function (msg) {
-                $('#crypt_text').text(msg.decrypt_text)
+                $('#crypt_text').text(msg.info_decrypt)
             });
     }
     else {
