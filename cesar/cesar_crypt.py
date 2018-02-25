@@ -88,7 +88,9 @@ def freq_analysis(input_text):
     :return: dict{'буква': частота повторений}
     """
 
-    input_text.swapcase()  # переводит строку в нижний регистр
+    lower_text = input_text.lower()  # переводит строку в нижний регистр
+
+
     frequency_letter = {'a': 0,
                         'b': 0,
                         'c': 0,
@@ -117,7 +119,7 @@ def freq_analysis(input_text):
                         'z': 0,
                         }
     for char in ALPHABET_LOWER:
-        frequency_letter[char] = input_text.count(char) / len(input_text) * 100
+        frequency_letter[char] = lower_text.count(char) / len(lower_text) * 100
     return frequency_letter
 
 
